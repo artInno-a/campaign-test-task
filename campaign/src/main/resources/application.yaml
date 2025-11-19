@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: creative-automation
+
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY}
+
+      chat:
+        options:
+          model: gpt-4o-mini
+          temperature: 0.0
+
+      image:
+        options:
+          model: dall-e-3
+          n: 1
+          height: 1024
+          width: 1024
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+app:
+  storage:
+    input-dir: ./assets/input
+    output-dir: ./assets/output
+

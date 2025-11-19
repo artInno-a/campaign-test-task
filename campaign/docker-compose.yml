@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  backend:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    volumes:
+      - ./assets:/app/assets
+    networks:
+      - app-network
+
+  frontend:
+    build: ../campaign-ui
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
